@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Action - Mon Site LEGO</title>
+    <title>Game - Mon Site LEGO</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
 </head>
 <body id="body_action">
@@ -14,8 +14,8 @@
             </a>
             <nav>
                 <a href="{{ url('/') }}" id="home-link">Accueil</a>
-                <a href="{{ url('/game') }}" id="game-link">Game</a>
-                <a href="{{ url('/action') }}" id="action-link" class="active">Action</a>
+                <a href="{{ url('/game') }}" id="game-link" class="active">Game</a>
+                <a href="{{ url('/action') }}" id="action-link">Action</a>
             </nav>
             <div id="lang-switcher" style="display: flex; align-items: center; gap: 10px;">
                 <div style="position: relative;">
@@ -48,19 +48,60 @@
                 </div>
             </div>
         </header>
-
-        <main style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
-            <h1 id="action-title">Page Action</h1>
-            <p id="action-desc">
-                Bienvenue sur la page Action ! Ici, vous pouvez explorer les différentes actions que nous proposons pour améliorer votre expérience LEGO.
-            </p>
-            <button id="start-action" style="padding: 10px 20px; background: #1bc300; color: #fff; border: none; border-radius: 5px; cursor: pointer;">
-                Commencer une action
-            </button>
+        <div style="max-width: 800px; margin: 30px auto; background: #ffffff00; padding: 25px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); display: flex; gap: 20px; justify-content: center;">
+            <div style="flex: 1; text-align: center">
+                <h2 id="score-title">Score</h2>
+                <p><strong>Score :</strong> <span id="score">1200</span></p>
+            </div>
+            <div style="flex: 1; text-align: center">
+                <h2 id="level-title">Niveau</h2>
+                <p><strong>Niveau :</strong> <span id="level">5</span></p>
+            </div>
+        </div>
+        <main style="background: rgba(255, 255, 255, 0);">
+            <h1 id="welcome-msg">Bienvenue sur notre site LEGO !</h1>
+            <div style="max-width: 600px; margin: 30px auto; background: #fff; padding: 25px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">
+                <h2 id="product-list-title">Liste de produits LEGO</h2>
+                <table style="width: 100%; border-collapse: collapse; margin-bottom: 15px">
+                    <thead>
+                        <tr style="background: #f5f5f5">
+                            <th id="product-th">Produit</th>
+                            <th style="padding: 8px; border: 1px solid #ddd; text-align: right">Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd">LEGO City - Camion de Pompiers</td>
+                            <td style="padding: 8px; border: 1px solid #ddd; text-align: right">25</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd">LEGO Star Wars - X-Wing Fighter</td>
+                            <td style="padding: 8px; border: 1px solid #ddd; text-align: right">45</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd">LEGO Technic - Voiture de Course</td>
+                            <td style="padding: 8px; border: 1px solid #ddd; text-align: right">39</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd">LEGO Friends - Maison de Mia</td>
+                            <td style="padding: 8px; border: 1px solid #ddd; text-align: right">29</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd">LEGO Creator - Maison Moderne</td>
+                            <td style="padding: 8px; border: 1px solid #ddd; text-align: right">35</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr style="background: #f5f5f5">
+                            <td id="total-th">Total</td>
+                            <td style="padding: 8px; border: 1px solid #ddd; text-align: right; font-weight: bold;">173</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
         </main>
-
-        <footer>&copy; 2025 Mon Site LEGO - Tous droits réservés</footer>
     </div>
+    <footer>&copy; 2025 Mon Site LEGO - Tous droits réservés</footer>
     <script src="{{ asset('js/main.js') }}"></script>
 </body>
 </html>
