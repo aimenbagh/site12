@@ -13,7 +13,7 @@
                 <img src="{{ asset('img/logo.png') }}" alt="Logo LEGO" class="logo" />
             </a>
             <nav>
-                <a href="{{ url('/') }}" id="home-link">Accueil</a>
+                <a href="{{ url('/') }}" id="home-link" class="active">Accueil</a>
                 <a href="{{ url('/game') }}" id="game-link">Game</a>
                 <a href="{{ url('/action') }}" id="action-link">Action</a>
             </nav>
