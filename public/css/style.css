@@ -1,0 +1,198 @@
+/* Reset de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+}
+
+/* HEADER */
+header {
+    background-color: #1bc300; /* jaune-vert */
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header img.logo {
+    height: 50px;
+}
+
+header nav a,
+header .user-menu a {
+    margin-left: 15px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+header nav a:hover,
+header .user-menu a:hover {
+    color: red;
+}
+
+/* MAIN */
+main, form {
+    max-width: 600px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+main {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+main section {
+    flex: 1;
+    min-width: 250px;
+}
+
+/* FORMULAIRES */
+input, button {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #1bc300; /* jaune-vert */
+    border: none;
+    color: #333;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #17a700; /* un peu plus vert au hover */
+}
+
+/* Conteneur principal (wrapper) */
+.wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 5%;
+}
+
+/* FOOTER fixé en bas même avec peu de contenu */
+footer {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 1001;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    header, nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav a {
+        margin: 5px 0;
+    }
+
+    main, form {
+        margin: 80px 10px 20px;
+    }
+}
+
+/* Lang Switcher */
+#lang-switcher {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#lang-switcher button {
+    background: #1bc300;
+    border: none;
+    color: #333;
+    font-weight: bold;
+    padding: 6px 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.2s;
+    min-width: 90px;
+}
+
+#lang-switcher button:hover {
+    background: #17a700;
+}
+
+/* Map Container */
+.map-container iframe {
+    width: 100% !important;
+    max-width: 600px;
+    height: 300px !important;
+    min-height: 200px;
+    border: 0;
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 700px) {
+    .map-container iframe {
+        max-width: 98vw;
+        height: 200px !important;
+    }
+}
+
+/* Backgrounds for Different Pages */
+#body_indexe {
+    background: #f7f7f7 url("../img/bag1.jpg") no-repeat center center fixed;
+    background-size: cover;
+    background-position: center;
+}
+
+#body_action {
+    background: #f7f7f7 url("../img/bag2.png") no-repeat center center fixed;
+    background-size: cover;
+    background-position: center;
+}
+
+#body_profile {
+    background: #f7f7f7 url("../img/bag3.jpeg") no-repeat center center fixed;
+    background-size: cover;
+    background-position: center;
+}
