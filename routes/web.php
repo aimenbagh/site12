@@ -11,7 +11,7 @@ Route::get('/', function () {
 // Route for the dashboard page
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->name('dashboard');
+})->middleware('auth')->name('dashboard');
 
 // Route for the game page
 Route::get('/game', function () {
@@ -22,6 +22,14 @@ Route::get('/game', function () {
 Route::get('/action', function () {
     return view('action');
 })->name('action');
+
+Route::get('/dashboardadmin', function () {
+    return view('dashboardadmin');
+})->middleware('auth')->name('dashboardadmin');
+
+Route::get('/dashboardentreprise', function () {
+    return view('dashboardentreprise');
+})->middleware('auth')->name('dashboardentreprise');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
