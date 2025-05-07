@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('trches', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_admin')->constrained('users')->onDelete('cascade');
-            $table->foreignId('id_entreprise')->constrained('entreprise')->onDelete('cascade');
+            $table->foreignId('id_entreprises')->constrained('entreprises')->onDelete('cascade');
             $table->integer('qunt_ca');
             $table->integer('qunt_pa');
             $table->integer('qunt_pl');

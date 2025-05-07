@@ -14,12 +14,12 @@ return new class extends Migration
         Schema::create('entreprises', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_users')->nullable()->default(null);
-            $table->string('name'); // Nom de l'entreprise
+            $table->string('name')->nullable(); // Permet de ne pas fournir de valeur pour 'name'
             $table->string('code')->unique(); // Code unique de l'entreprise
-            $table->string('address'); // Adresse de l'entreprise
-            $table->string('city'); // Ville de l'entreprise
-            $table->string('postal_code'); // Code postal
-            $table->string('phone'); // Numéro de téléphone
+            $table->string('address')->nullable(); // Adresse de l'entreprise
+            $table->string('city')->nullable(); // Ville de l'entreprise
+            $table->string('postal_code')->nullable(); // Code postal
+            $table->string('phone')->nullable(); // Numéro de téléphone
             $table->string('email')->unique(); // Email de l'entreprise
             $table->timestamps();
         });

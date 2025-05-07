@@ -49,7 +49,15 @@ class UserSeeder extends Seeder
         // Vérifier si l'entrée entreprise existe déjà
         Entreprise::firstOrCreate(
             ['id_users' => $entrepriseUser->id], // Condition pour vérifier l'existence
-            ['code' => 'ENT123'] // Valeurs à insérer si l'entrée n'existe pas
+            [
+                'name' => 'Default Entreprise Name', // Fournir une valeur pour 'name'
+                'code' => 'ENT123',
+                'address' => 'Default Address',
+                'city' => 'Default City',
+                'postal_code' => '00000',
+                'phone' => '0000000000',
+                'email' => 'entreprise@example.com',
+            ]
         );
 
         // Vérifier si un utilisateur de test existe déjà

@@ -12,7 +12,6 @@ class Entreprise extends Model
     protected $table = 'entreprises'; // Spécifiez le nom de la table
 
     protected $fillable = [
-        'id_users',
         'name',
         'code',
         'address',
