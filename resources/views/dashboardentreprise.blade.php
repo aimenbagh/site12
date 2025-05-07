@@ -97,113 +97,22 @@
     <a href="{{ route('admin.entreprise.create') }}">Ajoute entreprise</a>
 </div></div>
     <div class="item"> 
-    <div class="main-content">
-        @if ($view === 'users')
-            <h1>Liste des utilisateurs</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nom</th>
-                        <th>Email</th>
-                        <th>Rôle</th>
-                        <th>Ville</th>
-                        <th>Adresse</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($users as $user)
-                        <tr>
-                            <td>{{ $user->id }}</td>
-                            <td>{{ $user->name }}</td>
-                            <td>{{ $user->email }}</td>
-                            <td>{{ $user->role }}</td>
-                            <td>{{ $user->vile }}</td>
-                            <td>{{ $user->address }}</td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        @elseif ($view === 'create-entreprise')
-            <h1 >Ajouter une entreprise</h1>
-            <form method="POST" action="{{ route('entreprise.store') }}" style="display: flex; flex-direction: column; gap: 5px; color: #333; font-weight: bold; background: transparent; border: none;margin-top: 5px;">
-                {{-- Display errors if any --}}
-                {{-- CSRF token for security --}}
-                @csrf
-                <div>
-                    <label for="name">Nom de l'entreprise</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div>
-                    <label for="code">Code</label>
-                    <input type="text" id="code" name="code" required>
-                </div>
-                <div>
-                    <label for="address">Adresse</label>
-                    <input type="text" id="address" name="address" required>
-                </div>
-                <div>
-                    <label for="city">Ville</label>
-                    <input type="text" id="city" name="city" required>
-                </div>
-                <div>
-                    <label for="postal_code">Code postal</label>
-                    <input type="text" id="postal_code" name="postal_code" required>
-                </div>
-                <div>
-                    <label for="phone">Téléphone</label>
-                    <input type="text" id="phone" name="phone" required>
-                </div>
-                <div>
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <button type="submit">Ajouter</button>
-            </form>
-        @elseif ($view === 'trche')
-            <h1>Liste des trches</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>ID Admin</th>
-                        <th>ID Entreprise</th>
-                        <th>Quantité CA</th>
-                        <th>Quantité PA</th>
-                        <th>Quantité PL</th>
-                        <th>Quantité VE</th>
-                        <th>Quantité ME</th>
-                        <th>Quantité OR</th>
-                        <th>Description</th>
-                        <th>Statut</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($trches as $trche)
-                        <tr>
-                            <td>{{ $trche->id }}</td>
-                            <td>{{ $trche->id_admin }}</td>
-                            <td>{{ $trche->id_entreprises }}</td>
-                            <td>{{ $trche->qunt_ca }}</td>
-                            <td>{{ $trche->qunt_pa }}</td>
-                            <td>{{ $trche->qunt_pl }}</td>
-                            <td>{{ $trche->qunt_ve }}</td>
-                            <td>{{ $trche->qunt_me }}</td>
-                            <td>{{ $trche->qunt_or }}</td>
-                            <td>{{ $trche->description }}</td>
-                            <td>{{ $trche->status }}</td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        @else
-            <h1>Bienvenue sur le tableau de bord Admin</h1>
-            <div class="card">
-                <h3>Statistiques générales</h3>
-                <p>Voici un aperçu rapide des performances de votre application.</p>
+        <h1>Bienvenue sur le tableau de bord de l'entreprise</h1>
+        <p>Voici quelques statistiques et informations importantes.</p>
+        <div class="stats">
+            <div class="stat-item">
+            <h3>Statistique 1</h3>
+            <p>Détails de la statistique 1...</p>
             </div>
-        @endif
-    </div>
+            <div class="stat-item">
+            <h3>Statistique 2</h3>
+            <p>Détails de la statistique 2...</p>
+            </div>
+            <div class="stat-item">
+            <h3>Statistique 3</h3>
+            <p>Détails de la statistique 3...</p>
+            </div>
+        </div>
 </div>
     
   </div>

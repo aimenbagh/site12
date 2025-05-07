@@ -101,7 +101,6 @@
             </div>
         </main>
     </div>
-    <footer>&copy; 2025 Mon Site LEGO - Tous droits réservés</footer>
     <script src="{{ asset('js/main.js') }}"></script>
 </body>
 </html>

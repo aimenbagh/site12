@@ -200,7 +200,6 @@
         </div>
     </div>
 
-    <footer>&copy; 2025 Mon Site LEGO - Tous droits réservés</footer>
 </body>
 
 </html>
