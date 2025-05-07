@@ -57,7 +57,7 @@ Route::get('/logout', function () {
 Route::get('/admin/users', function () {
     $users = User::all(); // Récupère tous les utilisateurs
     return view('dashboardadmin', [
-        'view' => 'users', // Ajout de la variable $view
+        'view' => 'users', // Définit la vue à afficher
         'users' => $users,
     ]);
 })->name('admin.users');
@@ -74,9 +74,9 @@ Route::post('/admin/entreprise/store', function (HttpRequest $request) {
 })->name('entreprise.store');
 
 Route::get('/admin/trche', function () {
-    $trches = Trche::all(); // Récupère toutes les entrées de la table "trche"
+    $trches = Trche::all(); // Récupère toutes les entrées de la table trches
     return view('dashboardadmin', [
-        'view' => 'trche', // Ajout de la variable $view
+        'view' => 'trche', // Définit la vue à afficher
         'trches' => $trches,
     ]);
 })->name('admin.trche');

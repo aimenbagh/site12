@@ -13,14 +13,16 @@ return new class extends Migration
     {
         Schema::create('trches', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_admin')->constrained('users')->onDelete('cascade');
-            $table->foreignId('id_entreprises')->constrained('entreprises')->onDelete('cascade');
-            $table->integer('qunt_ca');
-            $table->integer('qunt_pa');
-            $table->integer('qunt_pl');
-            $table->integer('qunt_ve');
-            $table->integer('qunt_me');
-            $table->integer('qunt_or');
+            $table->foreignId('id_admin')->constrained('users')->onDelete('cascade'); // Clé étrangère vers users
+            $table->foreignId('id_entreprises')->constrained('entreprises')->onDelete('cascade'); // Clé étrangère vers entreprises
+            $table->integer('qunt_ca'); // Quantité CA
+            $table->integer('qunt_pa'); // Quantité PA
+            $table->integer('qunt_pl'); // Quantité PL
+            $table->integer('qunt_ve'); // Quantité VE
+            $table->integer('qunt_me'); // Quantité ME
+            $table->integer('qunt_or'); // Quantité OR
+            $table->text('description')->nullable(); // Description
+            $table->string('status')->default('active'); // Statut (active/inactive)
             $table->timestamps();
         });
     }
