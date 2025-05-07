@@ -9,11 +9,17 @@ class Entreprise extends Model
 {
     use HasFactory;
 
-    protected $table = 'entreprise'; // Spécifiez le nom de la table
+    protected $table = 'entreprises'; // Spécifiez le nom de la table
 
     protected $fillable = [
-        'id_users', // Foreign key referencing the users table
-        'code',     // Unique code for the entreprise
+        'id_users',
+        'name',
+        'code',
+        'address',
+        'city',
+        'postal_code',
+        'phone',
+        'email',
     ];
 
     public function user()

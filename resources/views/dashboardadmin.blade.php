@@ -1,149 +1,201 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
 
-        .wrapper {
-            display: flex;
-            height: 100vh;
-        }
+  <title>Dashboard Layout</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        .sidebar {
-            width: 220px;
-            background-color: #34495e;
-            color: white;
-            padding: 20px;
-            box-sizing: border-box;
-        }
+    body {
+      height: 100vh;
+      font-family: Arial, sans-serif;
+    }
 
-        .sidebar h2 {
-            font-size: 22px;
-            margin-bottom: 30px;
-        }
+    .container {
+      display: flex;
+      gap: 2%;
+      flex-wrap: wrap;
+      align-content: flex-start;
+      height: 100vh;
+      padding: 1%;
+      background-color: #f4f4f4;
+    }
 
-        .sidebar a {
-            display: block;
-            color: white;
-            text-decoration: none;
-            margin-bottom: 15px;
-            padding: 8px 10px;
-            border-radius: 4px;
-        }
+    .item {
+      padding: 20px;
+      background-color: #ffffff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
 
-        .sidebar a:hover {
-            background-color: #3c5b75;
-        }
+    .item:nth-child(1), /* Header */
+    .item:nth-child(4)  /* Footer */ {
+      width: 100%;
+      height: 5%;
+    }
 
-        .main-content {
-            flex: 1;
-            padding: 30px;
-            box-sizing: border-box;
-            overflow-y: auto;
-        }
+    .item:nth-child(2) { /* Sidebar */
+        margin-top: 5%;
+      width: 25%;
+      height: 75%;
+    }
 
-        .card {
-            background-color: white;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-        }
+    .item:nth-child(3) { /* Content */
+        margin-top: 5%;
+      flex-grow: 1;
+      height: 75%;
+    }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        table, th, td {
-            border: 1px solid #ddd;
-        }
-
-        th, td {
-            padding: 10px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #f4f4f4;
-        }
-
-        footer {
-            background-color: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 15px;
-        }
-    </style>
+    /* Responsive option */
+    @media (max-width: 768px) {
+      .item:nth-child(2),
+      .item:nth-child(3) {
+        width: 100%;
+        height: auto;
+      }
+    }
+  </style>
 </head>
-
 <body>
-    <div class="wrapper">
-        <!-- Sidebar -->
-        <div class="sidebar">
-            <h2>Navigation</h2>
-            <a href="#">Tableau de bord</a>
-            <a href="#">Utilisateurs</a>
-            <a href="#">Produits</a>
-            <a href="#">Commandes</a>
-            <a href="#">Paramètres</a>
-        </div>
 
-        <!-- Main Content -->
-        <div class="main-content">
-            <h1>Bienvenue sur le tableau de bord Admin</h1>
-
-            <div class="card">
-                <h3>Statistiques générales</h3>
-                <p>Voici un aperçu rapide des performances de votre application.</p>
-            </div>
-
-            <div class="card">
-                <h3>Activité récente</h3>
-                <p>Aucune nouvelle notification pour le moment.</p>
-            </div>
-
-            <div class="card">
-                <h3>Liste des utilisateurs</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nom</th>
-                            <th>Email</th>
-                            <th>Rôle</th>
-                            <th>Ville</th>
-                            <th>Adresse</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($users as $user)
-                            <tr>
-                                <td>{{ $user->id }}</td>
-                                <td>{{ $user->name }}</td>
-                                <td>{{ $user->email }}</td>
-                                <td>{{ $user->role }}</td>
-                                <td>{{ $user->vile }}</td>
-                                <td>{{ $user->address }}</td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+  <div class="container">
+      <header>
+        <a href="{{ url('/') }}">
+            <img src="{{ asset('img/logo.png') }}" alt="Logo LEGO" class="logo" />
+        </a>
+        <div class="user-menu">
+            <img
+                src="{{ asset('img/user.png') }}"
+                alt="Utilisateur"
+                class="user-icon"
+                id="userIcon"
+                style="width: 40px; height: 40px; border-radius: 50%; cursor: pointer;"
+            />
+            <div
+                id="userInfo"
+                style="display: none; position: absolute; right: 20px; top: 70px; background: #fff; border: 1px solid #ccc; padding: 15px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); z-index: 2000;"
+            >
+                <p><strong id="user-label">Nom d'utilisateur :</strong> lego_user</p>
+                <p><strong id="email-label">Email :</strong> lego@example.com</p>
+                <a href="{{ url('/profile') }}" id="profile-link" style="color: #333; font-weight: bold; display: block; margin-bottom: 10px;">Voir le profil</a>
+                <a href="{{ url('/logout') }}" id="logout-link" style="color: red; font-weight: bold">Se déconnecter</a>
             </div>
         </div>
-    </div>
+    </header>
+    <div class="item"><div class="sidebar">
+    <h2>Navigation</h2>
+    <a href="{{ route('admin.users') }}">Utilisateurs</a>
+    <a href="{{ route('admin.trche') }}">Trach</a>
+    <a href="{{ route('admin.entreprise.create') }}">Ajoute entreprise</a>
+</div></div>
+    <div class="item"> <div class="main-content">
+    @if ($view === 'users')
+        <h1>Liste des utilisateurs</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nom</th>
+                    <th>Email</th>
+                    <th>Rôle</th>
+                    <th>Ville</th>
+                    <th>Adresse</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($users as $user)
+                    <tr>
+                        <td>{{ $user->id }}</td>
+                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->email }}</td>
+                        <td>{{ $user->role }}</td>
+                        <td>{{ $user->vile }}</td>
+                        <td>{{ $user->address }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    @elseif ($view === 'create-entreprise')
+        <h1>Ajouter une entreprise</h1>
+        @if (session('success'))
+            <p style="color: green;">{{ session('success') }}</p>
+        @endif
+        <form method="POST" action="{{ route('entreprise.store') }}">
+            @csrf
+            <div>
+                <label for="name">Nom de l'entreprise</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div>
+                <label for="code">Code</label>
+                <input type="text" id="code" name="code" required>
+            </div>
+            <div>
+                <label for="address">Adresse</label>
+                <input type="text" id="address" name="address" required>
+            </div>
+            <div>
+                <label for="city">Ville</label>
+                <input type="text" id="city" name="city" required>
+            </div>
+            <div>
+                <label for="postal_code">Code postal</label>
+                <input type="text" id="postal_code" name="postal_code" required>
+            </div>
+            <div>
+                <label for="phone">Téléphone</label>
+                <input type="text" id="phone" name="phone" required>
+            </div>
+            <div>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <button type="submit">Ajouter</button>
+        </form>
+    @elseif ($view === 'trche')
+        <h1>Liste des trches</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nom</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($trches as $trche)
+                    <tr>
+                        <td>{{ $trche->id }}</td>
+                        <td>{{ $trche->name }}</td>
+                        <td>{{ $trche->description }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    @else
+        <h1>Bienvenue sur le tableau de bord Admin</h1>
+        <div class="card">
+            <h3>Statistiques générales</h3>
+            <p>Voici un aperçu rapide des performances de votre application.</p>
+        </div>
+        <div class="card">
+            <h3>Activité récente</h3>
+            <p>Aucune nouvelle notification pour le moment.</p>
+        </div>
+    @endif
+</div></div>
+        <footer>&copy; 2025 Mon Site LEGO - Tous droits réservés</footer>
+    
+  </div>
+  <script src="{{ asset('js/main.js') }}"></script>
 
-    <footer>&copy; 2025 Mon Site LEGO - Tous droits réservés</footer>
 </body>
-
 </html>

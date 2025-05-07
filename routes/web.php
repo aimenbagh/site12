@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Request;
+use App\Models\Entreprise;
+use App\Models\Trche;
+use Illuminate\Http\Request as HttpRequest;
 
 Route::get('/', function () {
     return view('welcome');
@@ -27,6 +30,7 @@ Route::get('/action', function () {
 
 Route::get('/dashboardadmin', function () {
     return view('dashboardadmin', [
+        'view' => 'dashboard', // Ajout de la variable $view
         'users' => User::all(),
     ]);
 })->middleware('auth')->name('dashboardadmin');
@@ -49,5 +53,32 @@ Route::get('/logout', function () {
     Request::session()->regenerateToken();
     return redirect('/'); // Redirect to the homepage after logout
 })->name('logout');
+
+Route::get('/admin/users', function () {
+    $users = User::all(); // Récupère tous les utilisateurs
+    return view('dashboardadmin', [
+        'view' => 'users', // Ajout de la variable $view
+        'users' => $users,
+    ]);
+})->name('admin.users');
+
+Route::get('/admin/entreprise/create', function () {
+    return view('dashboardadmin', [
+        'view' => 'create-entreprise', // Définit la vue à afficher
+    ]);
+})->name('admin.entreprise.create');
+
+Route::post('/admin/entreprise/store', function (HttpRequest $request) {
+    Entreprise::create($request->all());
+    return redirect()->route('admin.entreprise.create')->with('success', 'Entreprise ajoutée avec succès.');
+})->name('entreprise.store');
+
+Route::get('/admin/trche', function () {
+    $trches = Trche::all(); // Récupère toutes les entrées de la table "trche"
+    return view('dashboardadmin', [
+        'view' => 'trche', // Ajout de la variable $view
+        'trches' => $trches,
+    ]);
+})->name('admin.trche');
 
 require __DIR__.'/auth.php';

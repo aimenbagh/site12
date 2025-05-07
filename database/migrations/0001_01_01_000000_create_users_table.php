@@ -25,13 +25,6 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('entreprise', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('id_users')->constrained('users')->onDelete('cascade');
-            $table->string('code')->unique();
-            $table->timestamps();
-        });
-
         Schema::create('password_reset_tokens', function (Blueprint $table) {
             $table->string('email')->primary();
             $table->string('token');
@@ -53,7 +46,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('entreprise');
         Schema::dropIfExists('users');
         Schema::dropIfExists('password_reset_tokens');
         Schema::dropIfExists('sessions');
