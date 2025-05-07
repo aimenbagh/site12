@@ -6,6 +6,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\Entreprise; // Ensure the Entreprise class exists in the specified namespace
+use App\Models\Admin; // Ensure the Admin class exists in the specified namespace
 
 class User extends Authenticatable
 {
@@ -44,5 +46,15 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function admin()
+    {
+        return $this->hasOne(Admin::class, 'id_user'); // Ensure the Admin class is defined and imported
+    }
+
+    public function entreprise()
+    {
+        return $this->hasOne(Entreprise::class, 'id_users'); // Ensure the 'id_users' column exists in the Entreprise table
     }
 }

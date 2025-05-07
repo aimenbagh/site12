@@ -17,8 +17,18 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->enum('role', ['client', 'entreprise','admin'])->default('client');
+            $table->string('vile');
+            $table->string('address');
+            $table->string('postal_code');
+            $table->enum('role', ['client', 'entreprise', 'admin'])->default('client');
             $table->rememberToken();
+            $table->timestamps();
+        });
+
+        Schema::create('entreprise', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('id_users')->constrained('users')->onDelete('cascade');
+            $table->string('code')->unique();
             $table->timestamps();
         });
 
@@ -43,8 +53,10 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::dropIfExists('entreprise');
         Schema::dropIfExists('users');
         Schema::dropIfExists('password_reset_tokens');
         Schema::dropIfExists('sessions');
+        Schema::dropIfExists('boit');
     }
 };
