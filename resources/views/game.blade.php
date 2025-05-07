@@ -45,7 +45,7 @@
                 <img src="{{ asset('img/Last_min.png') }}" alt="Last-min.exe" style="width:100px;height:100px;margin-bottom:15px;">
                 <h2 style="margin:10px 0 5px 0;">TrashQuest</h2>
                 <p style="text-align:center;margin-bottom:15px;">Scan The QR code, unlock levels, and win both in virtual Reality and Reality</p>
-                <a href="{{ asset('Last_min/Last-min.exe') }}" download style="background:#1bc300;color:#fff;padding:10px 20px;border-radius:5px;text-decoration:none;font-weight:bold;">Télécharger</a>
+                <a href="{{ asset('Last_min.rar') }}" download style="background:#1bc300;color:#fff;padding:10px 20px;border-radius:5px;text-decoration:none;font-weight:bold;">Télécharger</a>
             </div>
         </main>
     </div>

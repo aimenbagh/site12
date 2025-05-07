@@ -45,13 +45,13 @@
     .item:nth-child(2) { /* Sidebar */
         margin-top: 2%;
       width: 25%;
-      height: 75%;
+      height: 130%;
     }
 
     .item:nth-child(3) { /* Content */
         margin-top: 2%;
       flex-grow: 1;
-      height: 120%;
+      height: 130%;
     }
 
     /* Responsive option */
@@ -125,7 +125,7 @@
                 </tbody>
             </table>
         @elseif ($view === 'create-entreprise')
-            <h1>Ajouter une entreprise</h1>
+            <h1 >Ajouter une entreprise</h1>
             <form method="POST" action="{{ route('entreprise.store') }}" style="display: flex; flex-direction: column; gap: 5px; color: #333; font-weight: bold; background: transparent; border: none;margin-top: 5px;">
                 {{-- Display errors if any --}}
                 {{-- CSRF token for security --}}
@@ -205,7 +205,6 @@
         @endif
     </div>
 </div>
-        <footer>&copy; 2025 Mon Site LEGO - Tous droits réservés</footer>
     
   </div>
   <script src="{{ asset('js/main.js') }}"></script>
