@@ -51,5 +51,18 @@ class UserSeeder extends Seeder
             ['id_users' => $entrepriseUser->id], // Condition pour vérifier l'existence
             ['code' => 'ENT123'] // Valeurs à insérer si l'entrée n'existe pas
         );
+
+        // Vérifier si un utilisateur de test existe déjà
+        User::firstOrCreate(
+            ['email' => 'test@example.com'], // Condition pour vérifier l'existence
+            [ // Valeurs à insérer si l'utilisateur n'existe pas
+                'name' => 'Test User', // Ajout de la valeur pour le champ 'name'
+                'password' => Hash::make('password'),
+                'vile' => 'Default City',
+                'address' => 'Default Address',
+                'postal_code' => '00000',
+                'role' => 'client',
+            ]
+        );
     }
 }
