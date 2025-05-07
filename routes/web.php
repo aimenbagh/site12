@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use Illuminate\Support\Facades\Request;
 
 Route::get('/', function () {
     return view('welcome');
@@ -24,7 +26,9 @@ Route::get('/action', function () {
 })->name('action');
 
 Route::get('/dashboardadmin', function () {
-    return view('dashboardadmin');
+    return view('dashboardadmin', [
+        'users' => User::all(),
+    ]);
 })->middleware('auth')->name('dashboardadmin');
 
 Route::get('/dashboardentreprise', function () {
@@ -38,7 +42,11 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/logout', function () {
-    Auth::logout();
+    Auth::guard('web')->logout();
+
+    Request::session()->invalidate();
+
+    Request::session()->regenerateToken();
     return redirect('/'); // Redirect to the homepage after logout
 })->name('logout');
 

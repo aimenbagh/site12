@@ -17,9 +17,9 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('vile');
-            $table->string('address');
-            $table->string('postal_code');
+            $table->string('vile')->default('Unknown City');
+            $table->string('address')->default('Unknown Address');
+            $table->string('postal_code')->default('Unknown City');
             $table->enum('role', ['client', 'entreprise', 'admin'])->default('client');
             $table->rememberToken();
             $table->timestamps();
